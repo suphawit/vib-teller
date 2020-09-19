@@ -1,0 +1,65 @@
+<div class="row m-0">
+  <div class="col-lg-12">
+    <div class="mt-3">
+      <div class="card">
+        <div class="text-right">
+          <button type="button" class="btn btn-primary" style="background-color:rgb(99, 95, 152);border-color: rgb(99, 95, 152);" (click)="getInquiryApproveList()">Refresh</button>
+        </div>
+        <div class="col-md-12">
+          <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+              <thead class="background-blue text-white">
+                <tr>
+                  <th class="text-center">ลำดับ</th>
+                  <th>ชื่อ-นามสกุล</th>
+                  <th>รายการ</th>
+                  <th>รายละเอียดรายการ</th>
+                  <th>วันเวลาที่ทำการ</th>
+                  <th>สถานะ</th>
+                  <th class="text-center"></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let dataApproveList of dataApproveLists; let i = index;">
+                  <td class="text-center"> {{i+1}} </td>
+                  <td>{{dataApproveList.cust_name}}</td>
+                  <td>{{dataApproveList.txn_type}}</td>
+                  <td>{{dataApproveList.txn_detail}}</td>
+                  <td>{{dataApproveList.create_date}}</td>
+                  <td *ngIf="dataApproveList.status === 'A'"><span
+                      class="badge badge-pill badge-success">Approved</span></td>
+                  <td *ngIf="dataApproveList.status === 'R'"><span class="badge badge-pill badge-danger">Rejected</span>
+                  </td>
+                  <td *ngIf="dataApproveList.status === 'E'"><span class="badge badge-pill badge-warning">Expired</span>
+                  </td>
+                  <td *ngIf="dataApproveList.status === 'W'"><span class="badge badge-pill badge-info">Waiting</span>
+                  </td>
+                  <td *ngIf="dataApproveList.status !== 'W'"></td>
+                  <td *ngIf="dataApproveList.status === 'W'">
+                    <button class="btn btn-outline-success" type="button"
+                      (click)="updateApproveList('Approved', dataApproveList.txn_id)">Approve</button>
+                    <button class="btn btn-outline-danger" type="button"
+                      (click)="updateApproveList('Reject', dataApproveList.txn_id)">Reject</button>
+                  </td>
+                </tr>
+                <td *ngIf="dataApproveLists.length === 0" class="text-center" colspan="7">ไม่มีข้อมูล</td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #modal>
+  <!-- MODAL -->
+  <modal-body class="modal-body">
+    <div class="text-center mt-2">{{message}}</div>
+    <div class="mt-5 text-center">
+      <button type="button" class="background-blue button-modal-ok text-white button-submit"
+        (click)="modal.close()">ตกลง</button>
+    </div>
+  </modal-body>
+</modal>

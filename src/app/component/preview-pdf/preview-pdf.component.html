@@ -1,0 +1,19 @@
+  <div class="col-md-12 card">
+    <div align="center" >
+      <br>
+      <button class="display-7 button-blue text-center re_size_btn p-0" id="btn_go_back" (click)="goBack();">
+        กลับ
+      </button> 
+      <button class="display-7 button-blue text-center re_size_btn p-0"  id="btn_on_print" (click)="onPrint()">
+        พิมพ์
+      </button>
+      <button class="display-7 button-blue text-center re_size_btn p-0"  id="btn_on_download" (click)="onDownload()">
+        ดาวน์โหลด
+      </button>
+      <br> <br>
+    </div>
+  </div>
+  <div class="PDFbody">
+    <pdf-viewer src="{{pdf}}" [fit-to-page]="true" [render-text]="false" [original-size]="false" [autoresize]="true">
+    </pdf-viewer>
+  </div>

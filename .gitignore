@@ -1,0 +1,12 @@
+node_modules/node-sass/vendor/win32-x64-57/binding.node
+package-lock.json
+package.json
+protractor.conf.js
+proxy.conf.json
+tsconfig.json
+tslint.json
+.angular-cli.json
+README.md
+gulpfile.js
+karma.conf.js
+node_modules

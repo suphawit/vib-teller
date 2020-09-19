@@ -1,0 +1,46 @@
+<div class="row m-0">
+  <div class="col-lg-12">
+    <div class="mt-3">
+
+      <div class="card">
+        <div class="col-md-12">
+          <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+              <thead class="background-blue text-white">
+                <tr>
+                  <th>ลำดับ</th>
+                  <th>ตำแหน่ง</th>
+                  <th>ชื่อ</th>
+                  <th>เข้าสู่ระบบล่าสุด</th>
+                  <th>สถานะ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>AUTHOR</td>
+                  <td>{{Author_USER_FULLNAME !== '' ? Author_USER_FULLNAME : '-'}}</td>
+                  <td *ngIf="Author_LastLogin === ''" class="text-center">-</td>
+                  <td *ngIf="Author_LastLogin !== ''">{{ Author_LastLogin | date:'dd/MM/yyyy HH:mm' }}</td>
+
+                  <td *ngIf="!AuthorStatus" class="text-danger">ยังไม่เข้าสู่ระบบ</td>
+                  <td *ngIf="AuthorStatus" class="text-success">เข้าสู่ระบบสำเร็จ</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>TELLER</td>
+                  <td>{{Teller_USER_FULLNAME !== '' ? Teller_USER_FULLNAME : '-'}}</td>
+                  <td *ngIf="Teller_LastLogin === ''" class="text-center" >-</td>
+                  <td *ngIf="Teller_LastLogin !== ''">{{ Teller_LastLogin | date:'dd/MM/yyyy HH:mm' }}</td>
+                  <td *ngIf="!TellerStatus" class="text-danger">ยังไม่เข้าสู่ระบบ</td>
+                  <td *ngIf="TellerStatus" class="text-success">เข้าสู่ระบบสำเร็จ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

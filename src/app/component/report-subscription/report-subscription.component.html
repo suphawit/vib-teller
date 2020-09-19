@@ -1,0 +1,31 @@
+<div class="row m-0">
+  <div class="col-lg-12">
+    <div class="mt-3">
+      <div class="col-md-12 card">
+        <tr class="header col-md" style="height: 50px;">
+          <td>
+            <h4 class="title">ค้นหา</h4>
+          </td>
+        </tr>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <div class="form-group">
+                <td>วันที่ : &nbsp;&nbsp;</td>
+                <td>
+                  <input type="date" id="datepicker" class="underline form-control border-input" [(ngModel)]="reportDate">
+                </td>
+                <td>
+                  &nbsp;&nbsp;
+                  <button class="btn btn-fill btn-wd background-blue text-white" (click)="export()">
+                    Export
+                  </button>
+                </td>
+              </div>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

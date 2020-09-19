@@ -1,0 +1,83 @@
+@import "./src/styles"
+
+.text_border
+    border-style: solid
+    border-width: 1px 1px 1px 1px
+    border-color: $blue
+
+.frame
+  .slidee
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      float: left
+      margin: 0 80px 0 0
+      padding: 0
+      width: 300px
+      height: 400px
+      transform: scale(1)
+      transition: all .2s ease-in-out
+
+.re_size_btn
+  padding: 0px 70px
+  font-size: 30px !important
+  width: 370px !important
+
+.re_size_btn3
+  padding: 0px 70px
+  font-size: 30px !important
+  width: 250px !important
+
+.re_size_btn2
+  padding: 0px 70px
+  font-size: 30px !important
+  width: 30px !important
+  background-image: url ('./assets/images/rotate_icon.png') no-repeat;
+
+.news-product-image
+    text-align: center
+    img
+      width: 360px
+
+.product-image
+    text-align: center
+    img
+      width: 70%
+
+.seletor-content
+  width: 65%
+  height: 90%
+  position: fixed
+  bottom: 0px
+  left: 0
+  right: 0
+  margin: 0 auto
+  background-color: white
+  z-index: 2
+  padding: 80px 100px 10px 100px
+
+
+.selector_content_bg
+  width: 100%
+  height: 100%
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  margin: 0 auto
+  z-index: 1
+  background: rgba(0, 0, 0, 0.7)
+
+.btnClickClose
+  max-width: 100%
+  z-index: 900
+  position: absolute
+  top: 200px
+  left: 71.1%
+
+.btn-square
+  width: 250px
+  height: 200px
+  border-radius: 30px
+  @extend .background-blue

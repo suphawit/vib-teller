@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="container" style="width: 623px">
+      <div class="col-md-12 text-center">
+        <div class="p-5 border-gray">
+          <div class="text-center p-5">
+            <img src="./assets/images/ic_logo.png" height="80px">
+          </div>
+          <div class="mb-2 mt-3">Branch</div>
+          <div class="mb-3 text-center">
+            <select class="input-login" (change)="changeBranch($event.target.value)" required>
+              <option>--- กรุณาเลือก ---</option>
+              <option *ngFor="let branchList of branchLists" value="{{branchList.branch_code}}">
+                {{branchList.branch_code}} {{branchList.branch_desc}}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-2 mt-3">Machine</div>
+          <div class="mb-3 text-center">
+            <select class="input-login" [(ngModel)]="machineId" [disabled]="disabledMachine">
+              <option>--- กรุณาเลือก ---</option>
+              <option *ngFor="let machineList of machineLists" value="{{machineList.machine_id}}">
+                {{machineList.machine_id}}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-2 mt-3"><img src="./assets/images/ic_username.png" height="25px"> Username</div>
+          <div class="mb-3 text-center">
+            <input type="text" class="input-login text-center" [(ngModel)]="username"
+              (keydown)="onKeyEnterPress($event)" autocomplete="off">
+          </div>
+
+          <div class="mb-2"><img src="./assets/images/ic_key.png" height="25px"> Password</div>
+          <div class=" text-center">
+            <input type="password" class="input-login text-center" autocomplete="off" [(ngModel)]="password"
+              (keydown)="onKeyEnterPress($event)">
+          </div>
+          <div class="text-center p-5">
+            <button type="button" class="background-blue text-white button-login" (click)="onClickLogin()">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SHOW SUCCESS AND ERROR -->
+<modal #modal>
+  <modal-body class="modal-body">
+    <div class="text-center mt-2">
+      {{message}}
+    </div>
+    <div class="mt-5 text-center">
+      <button type="button" class="background-blue button-modal-ok text-white button-submit" (click)="modal.close()">
+        ตกลง
+      </button>
+    </div>
+  </modal-body>
+</modal>

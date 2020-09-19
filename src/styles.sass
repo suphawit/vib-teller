@@ -1,0 +1,201 @@
+///COLOR///
+$black: #000000
+$dark: #1A1A1A
+$dark-gray: #646464
+$dark-black-gray: #7D7D7D
+$low-dark-gray: #7F7F7F
+$black-gray: #979797
+$gray: #A1A1A1
+$d5gray: #d5d5d5
+$light-gray: #CCCCCC
+$low-gray: #D8D8D8
+$white-gray: #EBE7E7
+$light-white-gray: #EEEEEE
+$low-light-white-gray: #F8F6F6
+$green: #30D08E
+$violet: #71477A
+$purple: #7270B3
+$purple_light: #d3d1ff
+$purple_white: #EEEDF5
+$dark-blue: #332985
+$blue: #594F74
+$light-blue: #594F74
+$white-blue: #E4F8FF
+$red: #FA6678
+$pink: #FECFD4
+$yellow: #FFEDD0
+$orange: #F5A623
+$white: #FFFFFF
+$red: #FF0000
+
+.header
+  height: 100px
+
+//BACKGROUND
+.background-blue
+  background-color: #594F74
+.background-light-blue
+  background-color: #edfbff
+.background-light-gray
+  background-color: #a6a6a6
+
+.button-size-submit
+  width: 250px
+  height: 50px
+
+//TEXT
+.text-blue
+  color: #2d8ce6
+.text-light-blue
+  color: #5cbcdd
+.text-light-gray
+  color: #939393
+.text-red
+  color: red
+.text-light-green
+  color: #6bad21
+.text-white
+  color: $white
+
+//BORDER
+.border-light-gray
+  border: 1px solid lightgray
+.border-top-light-gray
+  border-top: 1.3px solid lightgray
+
+button
+  border: none
+  border-radius: 2px
+input
+  border: none
+.button-modal-ok
+  width: 150px
+  height: 50px
+
+.display-5
+  font-size: 3.0rem
+  font-weight: 300
+  line-height: 1.1
+
+.display-6
+  font-size: 2.5rem
+  font-weight: 300
+  line-height: 1.1
+
+.display-7
+  font-size: 1.5rem
+  font-weight: 300
+
+.display-8
+  font-size: 1rem
+  font-weight: 300
+
+.input[type=text], input[type=password] , input[type=email]
+  &:focus
+  @extend .underline
+  border-bottom: 1px solid $blue !important
+  font-size: 24px
+
+.underline
+  border: none !important
+  outline: none !important
+  margin-left: 1px !important
+  border-bottom: 1px solid $blue !important
+  height: 35px
+  border-radius: 0
+  box-shadow: none
+  background-color: transparent
+
+.gray-scale
+  -webkit-filter: grayscale(100%)
+  filter: grayscale(100%)
+
+.non-gray-scale
+  -webkit-filter: grayscale(0%)
+  filter: grayscale(0%)
+
+.kk-button
+  border: none
+  color: white
+  padding: 5px 20px
+  border-radius: 4px
+  font-size: 48px !important
+  display: inline-block
+  margin-bottom: 0
+  font-weight: normal
+  line-height: 1.42857143
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  -ms-touch-action: manipulation
+  touch-action: manipulation
+  cursor: pointer
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  letter-spacing: 1px
+  min-width: 120px
+  &:disabled
+    background: $gray
+
+.button-blue
+  @extend .kk-button
+  @extend .border-scan
+  &:not(:disabled)
+    background: $blue
+  &:active
+    background: $blue
+    color: white !important
+
+.button-white
+  @extend .kk-button
+  @extend .border-blue
+  @extend .text-blue
+  background-color: $white
+
+.text-blue
+  color: $blue !important
+
+.border-blue
+  border: 3px solid #009AC7
+
+.border-scan
+  border: 3px solid $blue
+
+::-webkit-scrollbar
+    width: 2px
+    height: 2px
+    overflow: overlay
+
+.loading
+  -webkit-animation: rotation 2s infinite linear
+
+@-webkit-keyframes rotation 
+		from 
+				-webkit-transform: rotate(0deg)
+		to 
+				-webkit-transform: rotate(359deg)
+
+.modal-body
+  min-height: 150px
+
+.button[disabled=disabled], button:disabled
+  background-color: grey
+
+.underline
+  border: none !important
+  outline: none !important
+  margin-left: 1px !important
+  border-bottom: 1px solid $blue !important
+  height: 35px
+  border-radius: 0
+  box-shadow: none
+  background-color: transparent
+
+.ng2-pdf-viewer-container > div
+  position: relative
+
+.btn:focus, .btn.focus, .form-control:focus, .form-control.focus
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(99, 95, 152, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem rgba(99, 95, 152, 0.5) !important;

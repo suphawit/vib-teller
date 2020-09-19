@@ -1,0 +1,106 @@
+<div *ngIf="haveData" class="row m-0">
+  <div class="col-lg-12">
+    <div class="mt-3">
+      <div class="col-md-12 card">
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead class="background-blue text-white">
+              <tr>
+                <th>ลำดับ</th>
+                <th>เลขบัญชี</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataList let no = index">
+                <td>{{no+1}}</td>
+                <td>{{data}}</td>
+                <td>
+                  <button class="display-7 button-blue text-center re_size_btn p-0" id="btn_{{data.ID_NO}}_id" (click)="onShowModal(data)">
+                    รายละเอียด
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!haveData" class="text-center size20 pt-5">
+  {{errormessage}}
+</div>
+
+<div *ngIf="Modal" id="dismiss_bg_otp" class="selector_content_bg" (click)="onCloseModal()"></div>
+<div *ngIf="Modal" class="seletor-content">
+  <div *ngIf="Show">
+    <div class="container mt-3">
+      <div class="row text-center display-7 header border">
+        <div class="col-lg-1 border">
+          ลำดับ
+        </div>
+        <div class="col-lg-8 border">
+          ชื่อไฟล์
+        </div>
+        <div class="col-lg-3 border">
+
+        </div>
+      </div>
+
+      <div *ngFor="let data of dataShowList let no = index" class="text-center display-8 text-data line-height hoverTable">
+        <div class="scroll row">
+          <div class="col-lg-1 border ">
+            {{no+1}}
+          </div>
+          <div class="col-lg-8 border ">
+            {{data.file}}
+          </div>
+          <div class="col-lg-3 border">
+            <button class="display-7 button-blue text-center re_size_btn p-0" id="btn_{{no+1}}_id" (click)="onViewFiles(data)">
+              รายละเอียด
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="Progress">
+    <div class="col-lg-12 pt-5 m-0 text-center">
+      <img class="loading" src="./assets/images/loading.png" />
+    </div>
+    <div class="display-7 col-lg-12 text-center mt-3">
+      ระบบกำลังทำรายการ
+    </div>
+  </div>
+
+  <div *ngIf="View">
+    <div class="product-image">
+      <img style="width: 100%" src="{{imageURL}}">
+    </div>
+    <div class="col-lg-12 text-center mt-5">
+      <button class="display-7 button-blue text-white mt-3 text-center re_size_btn_print" id="submit_Print_id" (click)="onShowModal(account_no)">
+        กลับ
+      </button>
+      <button class="display-7 button-blue text-white mt-3 text-center re_size_btn_print" id="submit_Print_id" (click)="onPrint(data)">
+        พิมพ์เอกสาร
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<modal #modal>
+  <modal-body class="modal-body">
+    <div class="text-center mt-2">
+      {{errormessage}}
+    </div>
+    <div class="mt-5 text-center">
+      <button type="button" class="background-blue button-modal-ok text-white button-submit" (click)="modal.close()">
+        ตกลง
+      </button>
+    </div>
+  </modal-body>
+</modal>

@@ -1,0 +1,53 @@
+<!-- Version 0.2.0 -->
+<nav class="header navbar navbar-toggleable-md navbar-light ">
+
+  <div class="col-lg-3">
+    <div class="navbar-brand">
+      <img src="./assets/images/ic_logo.png" height="80px">
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <ul class="nav">
+      <li class="nav-item " [class.active]="router.url ==='/dash-board'">
+        <a [routerLink]="['/dash-board']">History</a>
+      </li>
+      <li class="nav-item " [class.active]="router.url ==='/reprint'">
+        <a [routerLink]="['/reprint']">Reprint</a>
+      </li>
+      <li class="nav-item " [class.active]="router.url ==='/absorption'">
+        <a [routerLink]="['/absorption']">Absorption</a>
+      </li>
+      <li class="nav-item " [class.active]="router.url ==='/absorption'">
+        <a [routerLink]="['/getfile']">Get Files</a>
+      </li>
+      <li class="nav-item " [class.active]="router.url ==='/subscriptionreport'">
+        <a [routerLink]="['/subscriptionreport']">รายงานการเปิดบัญชี</a>
+      </li>
+      <li class="nav-item " [class.active]="router.url ==='/loginstatus'">
+        <a [routerLink]="['/loginstatus']">Role Status</a>
+      </li>
+    </ul>
+
+  </div>
+  <div>
+    <div class="div-logout" (click)="onShowLogoutModal()">
+      <img src="./assets/images/ic_logout.png" height="25px"> Logout
+    </div>
+  </div>
+</nav>
+
+<modal #LogoutModal>
+  <modal-body  class="modal-body">
+    <div class="text-center mt-2">
+      <p>คุณต้องการออกจากระบบหรือไม่ ?</p>
+    </div>
+    <div class="mt-5 text-center">
+      <button type="button" class="background-blue button-modal-ok text-white button-submit" (click)="onClickLogout()">
+        ตกลง
+      </button>
+      <button type="button" class="bg-secondary button-modal-ok text-white button-submit" (click)="LogoutModal.close()">
+        ยกเลิก
+      </button>
+    </div>
+  </modal-body>
+</modal>

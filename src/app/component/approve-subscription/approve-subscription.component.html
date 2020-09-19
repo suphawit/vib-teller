@@ -1,0 +1,56 @@
+<div *ngIf="itemApprove" class="p-5">
+        <div class="text-center">
+            <img src="./assets/images/ic_approve.png" width="170px">
+        </div>
+        <div class="text-center m-5">
+            <h3>กรุณายืนยันการทำรายการ </h3>
+        </div>
+        <div class="text-left row col-12 mt-5">
+               <div class="col-3">
+                    Date
+               </div> 
+               <div class="col-3">
+                    {{itemApprove.date}}
+               </div>
+               <div class="col-3">
+                    Time
+               </div>
+               <div class="col-3">
+                    {{itemApprove.time}}
+               </div>
+        </div> 
+        <div class="text-left row col-12 mt-3">
+                <div class="col-3">
+                     Name
+                </div> 
+                <div class="col-9">
+                     {{itemApprove.name}}
+                </div>
+         </div>
+         <div class="text-left row col-12 mt-3">
+                <div class="col-3">
+                     Transaction
+                </div> 
+                <div class="col-9">
+                    {{itemApprove.content}}
+                </div>
+         </div>  
+         <div class="text-center mt-5">
+                <h4>Timeout</h4> 
+         </div>  
+         <div class="text-center mt-3">
+                <h2 id="countdown" class="counter"></h2>
+         </div>  
+         <div class="text-center mt-5">
+                <button type="button" class="background-blue text-white button-submit" 
+                (click)="onClickApprove()">
+                    Accept 
+                </button>
+            </div>
+          <div class="text-center mt-2">
+                <button type="button" class="background-blue text-white button-submit" 
+                (click)="onClickReject()">
+                    Reject 
+                </button>
+         </div>  
+</div>

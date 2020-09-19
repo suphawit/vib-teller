@@ -1,0 +1,14 @@
+<div class="transaction-container-fluid scrollable">
+ 
+    <!-- <div *ngFor="let item of items; " class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+        <div class="card">
+            {{item | json}}
+            <button> approve </button>
+            <button> reject </button>
+        </div>
+    </div> -->
+
+    <div *ngIf="items.length == 0" class="text-center size20 pt-5">
+        ไม่พบรายการรออนุมัติ
+    </div>
+</div>

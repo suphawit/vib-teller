@@ -1,0 +1,130 @@
+<div class="row m-0">
+  <div class="col-lg-12">
+    <div *ngIf="isPreviewPDF == false" class="mt-3">
+
+      <div class="col-md-12 card">
+        <tr class="header col-md" style="height: 50px;">
+          <td>
+            <h4 class="title">ค้นหา</h4>
+          </td>
+        </tr>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-striped">
+            <thead>
+              <div class="form-group">
+                <td>วันที่ทำรายการ &nbsp;&nbsp; </td>
+                <td><input type="date" id="datepicker" class="underline form-control border-input" [(ngModel)]="txn_date_from"></td>
+                <td>ถึง &nbsp;&nbsp; </td>
+                <td><input type="date" id="datepicker" class="underline form-control border-input" [(ngModel)]="txn_date_to"></td>
+              </div>
+            </thead>
+            <thead>
+              <div class="form-group">
+                <td>เลขที่บัตรประชาชน : &nbsp;&nbsp;</td>
+                <td>
+                  <input type="text" class="form-control border-input" maxlength="13" [(ngModel)]="card_no">
+                </td>
+
+              </div>
+            </thead>
+            <thead>
+              <div class="form-group">
+                <td><button class="btn btn-fill btn-wd background-blue text-white" id="btn_print" (click)="searchDataList()">
+                    ค้นหา
+                  </button></td>
+                <td><button class="btn btn-fill btn-wd background-blue text-white" id="btn_print" (click)="clearData()">
+                    ล้างข้อมูล
+                  </button></td>
+              </div>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="dataList != null">
+        <div class="col-md-12">
+          <div class="row" style="padding:15px 0px 0px 15px">
+            <label><b>แสดงข้อมูลด้วยเงื่อนไข</b></label>
+            <div class="col-md-3">
+              วันที่ทำรายการ : {{tmp_txn_date_from?(tmp_txn_date_from | date:'dd/MM/yyyy'):'-'}} ถึง :
+              {{tmp_txn_date_to?(tmp_txn_date_to | date:'dd/MM/yyyy'):'-'}}
+            </div>
+            <div class="col-md-3">
+              เลขที่บัตรประชาชน : {{tmp_card_no?tmp_card_no:'-'}}
+            </div>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+              <thead class="background-blue text-white">
+                <tr>
+                  <th>ลำดับ</th>
+                  <th>รหัสประชาชน</th>
+                  <th>เอกสาร</th>
+                  <th>วันที่ออกเอกสาร</th>
+                  <th>Preview</th>
+                  <!-- <th>พิมพ์</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of dataList let i = index">
+                  <td>{{getPageNumber(i) + 1 }}</td>
+                  <td>{{data.ID_NO}}</td>
+                  <td>{{data.REPORT_NAME}}</td>
+                  <td>{{data.LASTUPD_DTM | date:'dd/MM/yyyy HH:mm'}}</td>
+                  <td>
+                    <button class="display-7 button-blue text-center re_size_btn p-0" (click)="previewPDF(data.ID_NO,data.ID_TYPE,data.LOG_REQ_ID, data.REPORT_NAME)">
+                      Preview
+                    </button>
+                  </td>
+                  <!-- <td>
+                    <button class="display-7 button-blue text-center re_size_btn p-0" id="btn_{{data.LOG_REQ_ID}}_id"
+                      (click)="onPrint('btn_'+data.LOG_REQ_ID+'_id',data.ID_NO,data.ID_TYPE,data.LOG_REQ_ID)">
+                      พิมพ์
+                    </button>
+                  </td> -->
+                </tr>
+                <tr *ngIf="dataList.length == 0">
+                  <td colspan="6" class="text-center">ไม่พบข้อมูล</td>
+                </tr>
+              </tbody>
+            </table>
+            <vib-pagination (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="3"
+              [page]="pager.pageNumber" [perPage]="pager.limitPage" [count]="pager.rowTotal"></vib-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #modal>
+  <modal-body class="modal-body">
+    <div class="text-center mt-2">
+      {{errormessage}}
+    </div>
+    <div class="mt-5 text-center">
+      <button type="button" class="background-blue button-modal-ok text-white button-submit" (click)="modal.close()">
+        ตกลง
+      </button>
+    </div>
+  </modal-body>
+</modal>
+
+<!-- <div *ngIf="isPreviewPDF == true">
+  <div class="col-md-12 card">
+    <div align="center" >
+      <br>
+      <button class="display-7 button-blue text-center re_size_btn p-0" (click)="goBack();">
+        กลับ
+      </button> 
+      <button class="display-7 button-blue text-center re_size_btn p-0"  (click)="onPrint(id, ID_NO, ID_TYPE, LOG_REQ_ID)">
+        พิมพ์
+      </button>
+      <br> <br>
+    </div>
+  </div>
+  <div class="PDFbody">
+    <pdf-viewer src="{{pdf}}" [fit-to-page]="true">
+    </pdf-viewer>
+  </div>
+</div> -->

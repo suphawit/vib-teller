@@ -1,0 +1,15 @@
+<div class="row" *ngIf="count > 0">
+  <div class="col-sm-12 col-md-5">
+    <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing {{ getMin() }} to {{ getMax() }} of {{ count }} entries</div></div>
+  <div class="col-sm-12 col-md-7">
+  <div class="float-right" id="example_paginate">
+    <ul class="pagination pagination-sm">
+      <li class="page-item"><button class="page-link" (click)="onPrev()" [disabled]="page === 1 || loading" [ngClass]="{ 'disabled': page === 1 || loading }">Previous</button></li>
+      <li *ngFor="let pageNum of getPages()" class="page-item" [ngClass]="{'active': pageNum === page, 'disabled': loading}">
+        <button class="page-link" (click)="onPage(pageNum)" style="background-color: #594f74;border-color: #ffffff;">{{ pageNum }}</button>
+      </li>
+      <li class="page-item"><button class="page-link" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">Next</button></li>
+    </ul>
+  </div>
+ </div>
+</div>
